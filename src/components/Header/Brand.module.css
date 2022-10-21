@@ -1,0 +1,15 @@
+.brand {
+  text-align: center;
+}
+
+.brand > h1 {
+  font-family: "Nabla", cursive;
+  text-transform: uppercase;
+  font-size: xx-large;
+  background: rgb(82, 94, 117);
+  display: inline-block;
+}
+
+.brand > p {
+  font-size: small;
+}

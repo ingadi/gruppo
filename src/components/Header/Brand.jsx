@@ -1,8 +1,10 @@
+import classes from "./Brand.module.css";
+
 function Brand() {
   return (
-    <section class="brand">
-      <h1 class="brand__title">gruppo</h1>
-      <p class="brand__description">categorize your resources</p>
+    <section className={classes.brand}>
+      <h1>gruppo</h1>
+      <p>categorize your resources</p>
     </section>
   );
 }
