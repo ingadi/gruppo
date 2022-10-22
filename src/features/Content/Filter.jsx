@@ -20,12 +20,14 @@ function Filter() {
       </div>
       <div className={styles.group}>
         <label className={styles.label} htmlFor="">
-          Filter
+          Filters
         </label>
         <select
           className={`${styles.field} ${styles["field-icon"]} ${styles["icon-filter"]}`}
           name=""
           id=""
+          multiple
+          list="filters"
         >
           <option value="">All</option>
           <option value="">Videos</option>

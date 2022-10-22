@@ -1,4 +1,5 @@
 import { AiOutlineUser } from "react-icons/ai";
+import { FiLogOut } from "react-icons/fi";
 import userStyles from "./User.module.css";
 import buttonStyles from "../../components/Button.module.css";
 
@@ -16,7 +17,10 @@ function User() {
       </button>
       <ul className={styles.actions}>
         <li>
-          <a href="">Logout</a>
+          <a href="">
+            <FiLogOut />
+            Logout
+          </a>
         </li>
       </ul>
     </div>

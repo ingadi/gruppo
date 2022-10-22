@@ -2,7 +2,6 @@
   display: inline-flex;
   gap: 0.2rem;
   justify-content: center;
-  /* align-items: center; */
   cursor: pointer;
   margin: 0;
   padding: 0;
@@ -70,17 +69,24 @@
 }
 
 .text {
-  border: 0;
-  font-size: larger;
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.icon {
+.text:hover {
+  /* border-color: rgb(82, 94, 117); */
+  /* border-radius: 0; */
+  outline: rgb(82, 94, 117) dashed 0.125rem;
+}
+
+.icon-stacked {
   flex-direction: column;
 }
 
-.icon:hover {
-  border-radius: 0;
-  outline: rgb(82, 94, 117) dashed 0.125rem;
+.icon {
+  align-items: center;
 }
 
 .icon-md {

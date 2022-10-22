@@ -7,7 +7,7 @@
 .actions {
   border-radius: 0.2rem;
   list-style: none;
-  padding: 0.5rem;
+  padding: 0.8rem;
   position: absolute;
   display: none;
   background: whitesmoke;
@@ -15,13 +15,21 @@
 }
 
 .actions a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  gap: 0.4rem;
   text-decoration: none;
   color: rgb(82, 94, 117);
+  border-bottom: 0.125rem dashed transparent;
 }
 
 .actions a:hover {
   color: rgb(15, 17, 21);
-  border-bottom: 0.125rem dashed;
+  border-color: rgb(15, 17, 21);
+  /* border-bottom: 0.125rem dashed; */
+  /* margin-bottom: -0.125rem; */
 }
 
 .avatar:focus + .actions {
