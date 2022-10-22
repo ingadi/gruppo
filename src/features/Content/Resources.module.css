@@ -1,0 +1,101 @@
+.resources {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.resource {
+  border: 0.125rem solid rgb(82, 94, 117);
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.type {
+  color: whitesmoke;
+  position: absolute;
+  text-transform: uppercase;
+  font-size: smaller;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+}
+
+.img {
+  background: lightgray;
+  min-height: 6rem;
+  min-width: 6rem;
+  position: relative;
+}
+
+.img::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.description {
+  padding: 1rem;
+}
+
+.description-text > b {
+  font-size: smaller;
+}
+
+.description-text * {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.description-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.125rem;
+}
+
+.resources-actions {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem;
+  width: 50%;
+}
+
+.resources-actions-new {
+  order: -1;
+}
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+  .resources {
+    padding: 2rem 0;
+  }
+
+  .resources-actions {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .resources-actions-new {
+    order: 0;
+  }
+}

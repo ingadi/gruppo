@@ -5,11 +5,11 @@ import Modal from "./components/Modal";
 
 function App() {
   return (
-    <>
+    <main>
       {/* <Modal /> */}
       <Header />
       <Content />
-    </>
+    </main>
   );
 }
 
