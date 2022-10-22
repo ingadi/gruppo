@@ -1,0 +1,14 @@
+.header {
+  grid-area: a;
+  background: rgb(82, 94, 117);
+  color: whitesmoke;
+  padding: 1rem;
+}
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+  .header {
+    height: 100vh;
+    padding: 2rem;
+  }
+}

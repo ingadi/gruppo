@@ -1,8 +1,14 @@
-import Header from "./components/Header";
+import Header from "./features/Header";
+import Content from "./features/Content";
 import "./App.css";
 
 function App() {
-  return <Header></Header>;
+  return (
+    <>
+      <Header />
+      <Content />
+    </>
+  );
 }
 
 export default App;

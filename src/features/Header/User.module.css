@@ -1,0 +1,36 @@
+.user {
+  position: relative;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.actions {
+  border-radius: 0.2rem;
+  list-style: none;
+  padding: 0.5rem;
+  position: absolute;
+  display: none;
+  background: whitesmoke;
+  width: 100%;
+}
+
+.actions a {
+  text-decoration: none;
+  color: rgb(82, 94, 117);
+}
+
+.actions a:hover {
+  color: rgb(15, 17, 21);
+  border-bottom: 0.125rem dashed;
+}
+
+.avatar:focus + .actions {
+  display: block;
+}
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+  .user {
+    margin-top: 2rem;
+  }
+}
