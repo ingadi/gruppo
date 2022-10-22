@@ -2,7 +2,7 @@
   display: inline-flex;
   gap: 0.2rem;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   cursor: pointer;
   margin: 0;
   padding: 0;
@@ -81,4 +81,8 @@
 .icon:hover {
   border-radius: 0;
   outline: rgb(82, 94, 117) dashed 0.125rem;
+}
+
+.icon-md {
+  font-size: larger;
 }

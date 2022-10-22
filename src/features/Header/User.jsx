@@ -1,3 +1,4 @@
+import { AiOutlineUser } from "react-icons/ai";
 import userStyles from "./User.module.css";
 import buttonStyles from "../../components/Button.module.css";
 
@@ -10,6 +11,7 @@ function User() {
       <button
         className={`${styles.avatar} ${styles.btn} ${styles.md} ${styles["secondary-outline"]} ${styles.rounded}`}
       >
+        <AiOutlineUser className={styles["icon-md"]} />
         Tim Apple
       </button>
       <ul className={styles.actions}>
