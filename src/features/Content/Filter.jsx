@@ -29,7 +29,9 @@ function Filter() {
           multiple
           list="filters"
         >
-          <option value="">All</option>
+          <option value="" selected>
+            All
+          </option>
           <option value="">Videos</option>
           <option value="">Books</option>
           <option value="">Archived</option>
