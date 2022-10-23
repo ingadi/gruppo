@@ -89,7 +89,6 @@
   flex-direction: column;
   gap: 1rem;
   margin: 2rem;
-  width: 50%;
 }
 
 .resources-actions-new {
@@ -104,8 +103,8 @@
 
   .resources-actions {
     flex-direction: row;
-    justify-content: space-around;
     width: 100%;
+    justify-content: space-around;
   }
 
   .resources-actions-new {
