@@ -1,0 +1,22 @@
+.toast {
+  position: fixed;
+  bottom: 4vh;
+  left: 10vw;
+  right: 10vw;
+  margin: 0 auto;
+  background-color: rgb(216, 217, 207);
+  text-align: center;
+  padding: 1rem;
+  z-index: 2000;
+  border: 2px solid rgb(82, 94, 117);
+  border-radius: 0.2rem;
+}
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+  .toast {
+    padding: 2rem;
+    left: 30vw;
+    right: 30vw;
+  }
+}
