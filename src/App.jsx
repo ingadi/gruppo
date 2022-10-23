@@ -7,8 +7,8 @@ import Toast from "./components/Toast";
 function App() {
   return (
     <main>
-      {/* <Modal /> */}
-      <Toast />
+      <Modal />
+      {/* <Toast /> */}
       <Header />
       <Content />
     </main>
