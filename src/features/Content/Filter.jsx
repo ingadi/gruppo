@@ -28,13 +28,12 @@ function Filter() {
           id=""
           multiple
           list="filters"
+          defaultValue={["all"]}
         >
-          <option value="" selected>
-            All
-          </option>
-          <option value="">Videos</option>
-          <option value="">Books</option>
-          <option value="">Archived</option>
+          <option value="all">All</option>
+          <option value="videos">Videos</option>
+          <option value="books">Books</option>
+          <option value="archived">Archived</option>
         </select>
       </div>
     </form>

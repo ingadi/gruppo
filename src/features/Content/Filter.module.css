@@ -2,8 +2,8 @@
   background: rgb(216, 217, 207);
   display: grid;
   grid-template-columns: 1fr;
+  align-items: center;
   padding: 1rem;
-  gap: 1rem;
   margin-top: 1rem;
   border-radius: 0.125rem;
 }
@@ -12,8 +12,7 @@
 @media screen and (min-width: 1024px) {
   .filter {
     margin-top: 2rem;
-    padding: 2rem;
-    display: grid;
+    gap: 1rem;
     grid-template-columns: 2fr 1fr;
   }
 }

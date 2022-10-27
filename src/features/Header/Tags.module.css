@@ -3,23 +3,3 @@
   background: rgb(82, 94, 117);
   margin-top: 2rem;
 }
-
-.tag-list {
-  display: grid;
-  list-style: none;
-  grid-template-columns: repeat(2, 1fr);
-  height: 20vh;
-  gap: 0.8rem;
-  overflow: auto;
-  margin: 1rem 0;
-  padding: 0;
-}
-
-/* For Desktop View */
-@media screen and (min-width: 1024px) {
-  .tag-list {
-    grid-template-columns: 1fr;
-    margin-top: 2rem 0;
-    height: 30vh;
-  }
-}

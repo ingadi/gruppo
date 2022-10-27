@@ -15,12 +15,24 @@
   transform: translateY(0.125rem);
 }
 
+.icon-center {
+  align-items: center;
+}
+
 .md {
   padding: 0.5rem 2rem;
 }
 
 .sm {
   padding: 0.2rem 0.6rem;
+}
+
+.xx-sm {
+  padding: 0.2rem;
+}
+
+.x-sm {
+  padding: 0.3rem;
   font-size: smaller;
 }
 
@@ -68,25 +80,18 @@
   color: rgba(245, 245, 245, 1);
 }
 
-.text {
-  /* display: flex; */
+.icon-top {
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
-.text:hover {
-  /* border-color: rgb(82, 94, 117); */
-  /* border-radius: 0; */
+.no-bg:hover {
   outline: rgb(82, 94, 117) dashed 0.125rem;
 }
 
-.icon-stacked {
-  flex-direction: column;
-}
-
 .icon {
-  align-items: center;
+  align-self: center;
+  /* align-items: center; */
 }
 
 .icon-md {
