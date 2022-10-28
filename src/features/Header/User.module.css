@@ -1,50 +1,106 @@
 .user {
-  position: relative;
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.actions {
-  border-radius: 0.2rem;
-  list-style: none;
-  padding: 0.8rem;
-  position: absolute;
-  display: none;
-  background: whitesmoke;
-  width: 100%;
-}
-
-.actions a {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  vertical-align: middle;
-  gap: 0.4rem;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem;
+}
+
+.user-img {
+  height: 1.6rem;
+  width: 1.6rem;
+  background: lightblue;
+  display: inline-block;
+  border-radius: 2rem;
+}
+
+.username {
+  font-weight: bold;
+  margin-right: 0.8rem;
+  user-select: none;
+  font-size: smaller;
+}
+
+.username::after {
+  display: inline-block;
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='whitesmoke' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  margin-left: 0.2rem;
+  vertical-align: sub;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.user label:focus .avatar > .username::after {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='whitesmoke' viewBox='0 0 16 16'%3E%3Cpath d='m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/%3E%3C/svg%3E");
+}
+
+.user label {
+  border: 0.125rem solid;
+  cursor: pointer;
+  border-radius: 2rem;
+  position: relative;
+}
+
+.user input[type="checkbox"] {
+  display: none;
+}
+
+.user ul {
+  padding: 0;
+  margin: 0.5rem 0;
+  list-style: none;
+  position: absolute;
+  background: whitesmoke;
+  border-radius: 0.2rem;
+  display: none;
+  left: 0;
+  right: 0;
+}
+
+.user label:focus > ul,
+.user ul:hover {
+  display: block;
+}
+
+.user li {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
   text-decoration: none;
   color: rgb(82, 94, 117);
-  border-bottom: 0.125rem dashed transparent;
-  cursor: pointer;
-  user-select: none;
+  margin: 0.5rem 0;
+  padding: 0.2rem 1.5rem;
 }
 
-.actions a:hover {
-  color: rgb(15, 17, 21);
-  border-color: rgb(15, 17, 21);
-  /* border-bottom: 0.125rem dashed; */
-  /* margin-bottom: -0.125rem; */
-}
-
-/* .avatar:focus + .actions {
-  display: block;
-} */
-
-.user:focus > .actions {
-  display: block;
+.user li:hover {
+  background: lightgray;
 }
 
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
-  .user {
-    margin-top: 2rem;
+  .avatar {
+    gap: 0.8rem;
+  }
+
+  .user-img {
+    height: 2.3rem;
+    width: 2.3rem;
+  }
+
+  .username {
+    font-size: medium;
+    margin-right: 1rem;
+  }
+
+  .user ul {
+    /* left: 3vw;
+    right: 3vw; */
   }
 }
