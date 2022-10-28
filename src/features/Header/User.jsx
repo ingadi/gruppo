@@ -1,3 +1,4 @@
+import { logOut } from "../../api/auth";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import userStyles from "./User.module.css";
@@ -6,18 +7,27 @@ import buttonStyles from "../../components/Button.module.css";
 const styles = { ...userStyles, ...buttonStyles };
 
 function User() {
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      console.log("hi");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div className={styles.user}>
+    <div tabIndex="0" className={styles.user}>
       {/*todo use css modules compose to reduce*/}
-      <button
+      <span
         className={`${styles.avatar} ${styles.btn} ${styles.md} ${styles["secondary-outline"]} ${styles.rounded}`}
       >
         <AiOutlineUser className={styles["icon-md"]} />
         Tim Apple
-      </button>
+      </span>
       <ul className={styles.actions}>
         <li>
-          <a href="">
+          <a onClick={handleLogout}>
             <FiLogOut />
             Logout
           </a>

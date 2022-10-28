@@ -23,6 +23,8 @@
   text-decoration: none;
   color: rgb(82, 94, 117);
   border-bottom: 0.125rem dashed transparent;
+  cursor: pointer;
+  user-select: none;
 }
 
 .actions a:hover {
@@ -32,7 +34,11 @@
   /* margin-bottom: -0.125rem; */
 }
 
-.avatar:focus + .actions {
+/* .avatar:focus + .actions {
+  display: block;
+} */
+
+.user:focus > .actions {
   display: block;
 }
 

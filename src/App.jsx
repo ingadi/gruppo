@@ -10,9 +10,9 @@ function App() {
     <main>
       {/* <Modal /> */}
       {/* <Toast /> */}
-      <Login />
-      {/* <Header />
-      <Content /> */}
+      {/* <Login /> */}
+      <Header />
+      <Content />
     </main>
   );
 }
