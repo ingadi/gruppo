@@ -85,10 +85,6 @@
 
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
-  .avatar {
-    gap: 0.8rem;
-  }
-
   .user-img {
     height: 2.3rem;
     width: 2.3rem;
@@ -97,10 +93,5 @@
   .username {
     font-size: medium;
     margin-right: 1rem;
-  }
-
-  .user ul {
-    /* left: 3vw;
-    right: 3vw; */
   }
 }

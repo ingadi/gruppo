@@ -3,6 +3,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
@@ -20,5 +21,26 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
+export const getAuthState = (setUserInfo) => {
+  onAuthStateChanged(auth, (user) => {
+    console.log(user);
+    if (user !== null) {
+      const { displayName, photoURL } = user;
+      setUserInfo({
+        displayName,
+        photoURL,
+        signOut: async () => {
+          try {
+            await signOut(auth);
+            setUserInfo(null);
+          } catch (error) {
+            throw error;
+          }
+        },
+      });
+    }
+  });
+};
+
 export const signInWithGoogle = () => signInWithPopup(auth, provider);
-export const logOut = () => signOut(auth);
+// export const logOut = () => signOut(auth);

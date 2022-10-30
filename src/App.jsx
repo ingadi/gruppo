@@ -3,17 +3,20 @@ import Content from "./features/Content";
 import "./App.css";
 import Modal from "./components/Modal";
 import Toast from "./components/Toast";
-import Login from "./features/Login";
+import { AuthProvider } from "./features/AuthProvider/AuthProvider";
 
 function App() {
   return (
-    <main>
-      {/* <Modal /> */}
-      {/* <Toast /> */}
-      {/* <Login /> */}
-      <Header />
-      <Content />
-    </main>
+    <AuthProvider>
+      <main>
+        {/* <Modal /> */}
+        {/* <Toast /> */}
+        {/* <Login /> */}
+
+        <Header />
+        <Content />
+      </main>
+    </AuthProvider>
   );
 }
 
