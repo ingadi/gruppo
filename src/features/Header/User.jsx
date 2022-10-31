@@ -1,22 +1,26 @@
 // import { logOut } from "../../api/auth";
 import AuthContext from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
-import { AiOutlineUser } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import styles from "./User.module.css";
+import { useState } from "react";
 // import buttonStyles from "../../components/Button.module.css";
 
 // const styles = { ...userStyles, ...buttonStyles };
 
 function User() {
+  const [isLoading, setIsLoading] = useState(false);
   const { userInfo } = useContext(AuthContext);
   const { displayName, photoURL, signOut } = userInfo;
 
   const handleLogout = async () => {
+    setIsLoading(true);
     try {
       await signOut();
     } catch (error) {
       //handle error
+    } finally {
+      setIsLoading(false);
     }
   };
 

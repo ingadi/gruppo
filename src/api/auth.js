@@ -21,26 +21,28 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-export const getAuthState = (setUserInfo) => {
-  onAuthStateChanged(auth, (user) => {
-    console.log(user);
-    if (user !== null) {
-      const { displayName, photoURL } = user;
-      setUserInfo({
-        displayName,
-        photoURL,
-        signOut: async () => {
-          try {
-            await signOut(auth);
-            setUserInfo(null);
-          } catch (error) {
-            throw error;
-          }
-        },
-      });
-    }
+export const getUserInfo = (setUserInfo) =>
+  new Promise((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      const userInfo =
+        user === null
+          ? null
+          : {
+              displayName: user["displayName"],
+              photoUrl: user["photoUrl"],
+              signOut: async () => {
+                try {
+                  await signOut(auth);
+                  setUserInfo(null);
+                } catch (error) {
+                  throw error;
+                }
+              },
+            };
+      setUserInfo(userInfo);
+      resolve();
+    });
   });
-};
 
 export const signInWithGoogle = () => signInWithPopup(auth, provider);
 // export const logOut = () => signOut(auth);

@@ -102,3 +102,9 @@
 .icon-md {
   font-size: larger;
 }
+
+.icon-lg {
+  font-size: xx-large;
+  /* height: 6rem;
+  width: 6rem; */
+}
