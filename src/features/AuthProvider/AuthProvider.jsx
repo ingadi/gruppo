@@ -1,4 +1,5 @@
 import LoadingIndicator from "../../components/LoadingIndicator";
+import Toast from "../../components/Toast";
 import { createContext, useState, useEffect } from "react";
 import { signInWithGoogle, getUserInfo } from "../../api/auth";
 import styles from "./AuthProvider.module.css";
@@ -8,6 +9,10 @@ import buttonStyles from "../../components/Button.module.css";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
+  const [notification, setNotification] = useState({
+    type: null,
+    message: null,
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
 
@@ -16,7 +21,10 @@ export function AuthProvider({ children }) {
     try {
       await signInWithGoogle();
     } catch (error) {
-      // Handle errors
+      setNotification({
+        type: "error",
+        message: "Something went wrong, maybe try again?",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -29,6 +37,9 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ userInfo }}>
+      {notification["type"] && (
+        <Toast type={notification["type"]} message={notification["message"]} />
+      )}
       {userInfo === null ? (
         <section className={styles.login}>
           <h1 className={styles.title}>gruppo</h1>

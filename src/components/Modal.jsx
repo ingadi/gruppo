@@ -1,10 +1,11 @@
+import { createPortal } from "react-dom";
 import modalStyles from "./Modal.module.css";
 import buttonStyles from "./Button.module.css";
 
 const styles = { ...modalStyles, ...buttonStyles };
 
 function Modal() {
-  return (
+  return createPortal(
     <div className={styles.modal}>
       <section className={styles.content}>
         <h2 className={styles.title}>Hello</h2>
@@ -21,7 +22,8 @@ function Modal() {
           </button>
         </div>
       </section>
-    </div>
+    </div>,
+    document.getElementById("overlay-root")
   );
 }
 
