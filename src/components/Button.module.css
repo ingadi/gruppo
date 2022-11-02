@@ -1,0 +1,110 @@
+.btn {
+  display: inline-flex;
+  gap: 0.2rem;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0.125rem;
+  font-weight: bold;
+}
+
+.btn:active {
+  transform: translateY(0.125rem);
+}
+
+.icon-center {
+  align-items: center;
+}
+
+.lg {
+  padding: 0.5rem 1rem;
+  font-size: medium;
+}
+
+.md {
+  padding: 0.5rem 2rem;
+}
+
+.sm {
+  padding: 0.2rem 0.6rem;
+}
+
+.xx-sm {
+  padding: 0.2rem;
+}
+
+.x-sm {
+  padding: 0.3rem;
+  font-size: smaller;
+}
+
+.rounded {
+  border-radius: 2rem;
+}
+
+.primary {
+  outline: 0.125rem solid rgb(82, 94, 117);
+  outline-offset: -0.1rem;
+  background: rgb(82, 94, 117);
+  color: whitesmoke;
+}
+
+.primary:hover {
+  background: rgb(61, 70, 87);
+}
+
+.primary-outline {
+  background: transparent;
+  outline: 0.125rem solid rgb(82, 94, 117);
+  color: rgb(82, 94, 117);
+}
+
+.primary-outline:hover,
+.primary-outline:focus {
+  outline: 0.156rem solid rgb(48, 56, 70);
+  color: rgb(48, 56, 70);
+}
+
+.secondary {
+  background: whitesmoke;
+  color: rgb(82, 94, 117);
+}
+
+.secondary-outline {
+  background: transparent;
+  outline: 0.125rem solid rgba(245, 245, 245, 0.9);
+  color: rgba(245, 245, 245, 0.9);
+}
+
+.secondary-outline:hover,
+.secondary-outline:focus {
+  outline: 0.125rem solid rgba(245, 245, 245, 1);
+  color: rgba(245, 245, 245, 1);
+}
+
+.icon-top {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.no-bg:hover {
+  outline: rgb(82, 94, 117) dashed 0.125rem;
+}
+
+.icon {
+  align-self: center;
+  /* align-items: center; */
+}
+
+.icon-md {
+  font-size: larger;
+}
+
+.icon-lg {
+  font-size: xx-large;
+  /* height: 6rem;
+  width: 6rem; */
+}

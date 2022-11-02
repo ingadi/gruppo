@@ -1,0 +1,30 @@
+.brand {
+  text-align: center;
+}
+
+.title {
+  font-family: "Nabla", cursive;
+  text-transform: uppercase;
+  font-size: xx-large;
+  background: rgb(82, 94, 117);
+  display: inline-block;
+}
+
+.description {
+  font-size: small;
+}
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+  .brand {
+    text-align: left;
+  }
+
+  .title {
+    padding: 0;
+  }
+
+  .description {
+    font-size: medium;
+  }
+}

@@ -1,41 +1,48 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Nabla&family=Proza+Libre&display=swap");
+
+:root {
+  font-family: "Proza Libre", sans-serif;
+  font-size: medium;
+  text-rendering: optimizeLegibility;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  color: rgb(30, 36, 46);
+  background: rgb(237, 237, 237);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+main {
+  display: grid;
+  grid-template-areas:
+    "a"
+    "b"
+    "c";
+  grid-template-columns: 1fr;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+  main {
+    grid-template-areas:
+      "a b"
+      "a .";
+    grid-template-columns: 1fr 3fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  h2 {
+    font-size: xx-large;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  h3 {
+    font-size: x-large;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
