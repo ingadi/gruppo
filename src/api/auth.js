@@ -29,7 +29,7 @@ export const getUserInfo = (setUserInfo) =>
           ? null
           : {
               displayName: user["displayName"],
-              photoUrl: user["photoUrl"],
+              photoURL: user["photoURL"],
               signOut: async () => {
                 try {
                   await signOut(auth);
