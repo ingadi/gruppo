@@ -39,6 +39,7 @@
 .tag-list ul,
 .tag-list form,
 .tag-list input[type="checkbox"],
+.tag-list input[type="radio"],
 .tag-list span:has(+ input:checked),
 .tag-list span:has(+ label > input:checked),
 .tag-list label > input:checked + button,
