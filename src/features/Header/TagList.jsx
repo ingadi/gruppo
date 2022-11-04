@@ -14,14 +14,18 @@ function TagList() {
         <TagListForm formId="form1" type="new" placeHolder="Create tag" />
       </li>
       <li>
-        <label htmlFor="list">
+        <label htmlFor="programming">
           <span
             title="Programming"
             className={`${styles.control} ${styles["list-control"]}`}
           >
             Programming
           </span>
-          <TagListForm formId="form2" type="edit" placeHolder="Programming" />
+          <TagListForm
+            formId="programming-form"
+            type="edit"
+            placeHolder="Programming"
+          />
           <button
             title="Delete tag"
             type="button"
@@ -29,7 +33,30 @@ function TagList() {
           >
             <RiDeleteBin6Line />
           </button>
-          <input type="checkbox" name="" id="list" />
+          <input type="radio" name="level1" id="programming" />
+          <ul>
+            <li>1</li>
+            <li>2</li>
+          </ul>
+        </label>
+      </li>
+      <li>
+        <label htmlFor="music">
+          <span
+            title="Music"
+            className={`${styles.control} ${styles["list-control"]}`}
+          >
+            Music
+          </span>
+          <TagListForm formId="music-form" type="edit" placeHolder="Music" />
+          <button
+            title="Delete tag"
+            type="button"
+            className={`${styles.btn} ${styles["xx-sm"]} ${styles.rounded} ${styles.primary} ${styles.icon}`}
+          >
+            <RiDeleteBin6Line />
+          </button>
+          <input type="radio" name="level1" id="music" />
           <ul>
             <li>1</li>
             <li>2</li>
