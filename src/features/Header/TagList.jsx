@@ -1,6 +1,11 @@
-import { AiOutlineCloseCircle, AiOutlineCheckCircle } from "react-icons/ai";
+import {
+  AiOutlineCloseCircle,
+  AiOutlineCheckCircle,
+  AiOutlineUnorderedList,
+} from "react-icons/ai";
 import { BsPencilSquare } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { TbTagsOff } from "react-icons/tb";
 import buttonStyles from "../../components/Button.module.css";
 import tagListStyles from "./TagList.module.css";
 import inputStyles from "../../components/Input.module.css";
@@ -14,9 +19,24 @@ function TagList() {
         <TagListForm formId="form1" type="new" placeHolder="Create tag" />
       </li>
       <li>
+        <label className={`${styles["no-list"]}`} htmlFor="not-tagged">
+          <input type="radio" name="level1" id="not-tagged" />
+          <TbTagsOff />
+          <span title="Show resources with no tags">Not tagged</span>
+        </label>
+      </li>
+      <li>
+        <label className={`${styles["no-list"]}`} htmlFor="all-tagged">
+          <input type="radio" name="level1" id="all-tagged" />
+          <AiOutlineUnorderedList />
+          <span title="Show all resources"></span>
+          All tags
+        </label>
+      </li>
+      <li>
         <label htmlFor="programming">
           <span
-            title="Programming"
+            title="Show resources with programming tag"
             className={`${styles.control} ${styles["list-control"]}`}
           >
             Programming
@@ -43,14 +63,14 @@ function TagList() {
       <li>
         <label htmlFor="music">
           <span
-            title="Music"
+            title="Show resources with music tag"
             className={`${styles.control} ${styles["list-control"]}`}
           >
             Music
           </span>
           <TagListForm formId="music-form" type="edit" placeHolder="Music" />
           <button
-            title="Delete tag"
+            title="Delete this tag"
             type="button"
             className={`${styles.btn} ${styles["xx-sm"]} ${styles.rounded} ${styles.primary} ${styles.icon}`}
           >
@@ -73,6 +93,7 @@ function TagListForm({ formId, type, placeHolder = "" }) {
   return (
     <label htmlFor={formId}>
       <span
+        title={`${type === "new" ? "Create a" : "Edit this"} tag`}
         className={`${styles.control} ${
           styles[`input-control-${type}`] || ""
         } `}
