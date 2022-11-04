@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   max-height: 20vh;
-  margin: 1rem 0;
   overflow: auto;
 }
 
@@ -16,11 +15,9 @@
 }
 
 .tag-list > li li {
-  /* margin-left: 1.5rem; */
   margin-left: 2rem;
   position: relative;
   padding-top: 0.3rem;
-  /* padding-left: 0.2rem; */
 }
 
 .tag-list li::before {
@@ -124,5 +121,6 @@
 @media screen and (min-width: 1024px) {
   .tag-list {
     max-height: 30vh;
+    margin: 0.5rem 0 0 -0.4rem;
   }
 }
