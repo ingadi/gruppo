@@ -11,84 +11,83 @@ import tagListStyles from "./TagList.module.css";
 import inputStyles from "../../components/Input.module.css";
 
 const styles = { ...tagListStyles, ...buttonStyles, ...inputStyles };
+let depth = 1;
 
-function TagList() {
+function TagList({ data }) {
   return (
     <ul className={styles["tag-list"]}>
       <li>
-        <TagListForm formId="form1" type="new" placeHolder="Create tag" />
-      </li>
-      <li>
         <label className={`${styles["no-list"]}`} htmlFor="not-tagged">
-          <input type="radio" name="level1" id="not-tagged" />
+          <input type="radio" name={`depth-${depth}`} id="not-tagged" />
           <TbTagsOff />
           <span title="Show resources with no tags">Not tagged</span>
         </label>
       </li>
       <li>
         <label className={`${styles["no-list"]}`} htmlFor="all-tagged">
-          <input type="radio" name="level1" id="all-tagged" />
+          <input type="radio" name={`depth-${depth}`} id="all-tagged" />
           <AiOutlineUnorderedList />
-          <span title="Show all resources"></span>
-          All tags
+          <span title="Show all resources">All tags</span>
         </label>
       </li>
       <li>
-        <label htmlFor="programming">
-          <span
-            title="Show resources with programming tag"
-            className={`${styles.control} ${styles["list-control"]}`}
-          >
-            Programming
-          </span>
-          <TagListForm
-            formId="programming-form"
-            type="edit"
-            placeHolder="Programming"
-          />
-          <button
-            title="Delete tag"
-            type="button"
-            className={`${styles.btn} ${styles["xx-sm"]} ${styles.rounded} ${styles.primary} ${styles.icon}`}
-          >
-            <RiDeleteBin6Line />
-          </button>
-          <input type="radio" name="level1" id="programming" />
-          <ul>
-            <li>1</li>
-            <li>2</li>
-          </ul>
-        </label>
+        <TagItemForm
+          formId={`new-tag-${Date.now()}`}
+          type="new"
+          placeHolder="Create tag"
+        />
       </li>
-      <li>
-        <label htmlFor="music">
-          <span
-            title="Show resources with music tag"
-            className={`${styles.control} ${styles["list-control"]}`}
-          >
-            Music
-          </span>
-          <TagListForm formId="music-form" type="edit" placeHolder="Music" />
-          <button
-            title="Delete this tag"
-            type="button"
-            className={`${styles.btn} ${styles["xx-sm"]} ${styles.rounded} ${styles.primary} ${styles.icon}`}
-          >
-            <RiDeleteBin6Line />
-          </button>
-          <input type="radio" name="level1" id="music" />
-          <ul>
-            <li>1</li>
-            <li>2</li>
-          </ul>
-        </label>
-      </li>
+      {data.map((tagDetails) => (
+        <TagItem key={tagDetails.id} depth={depth} data={tagDetails} />
+      ))}
     </ul>
   );
 }
 
-function TagListForm({ formId, type, placeHolder = "" }) {
-  const label = type === "new" ? "Create tag" : <BsPencilSquare />;
+function TagItem({ data, depth }) {
+  const { title, id, children } = data;
+
+  return (
+    <li>
+      <label htmlFor={id}>
+        <span
+          title={`Show resources with ${title} tag`}
+          className={`${styles.control} ${styles["list-control"]}`}
+        >
+          {title}
+        </span>
+        <TagItemForm
+          formId={`edit-tag-${id}`}
+          type="edit"
+          placeHolder={title}
+        />
+        <button
+          title="Delete tag"
+          type="button"
+          className={`${styles.btn} ${styles["xx-sm"]} ${styles.rounded} ${styles.primary} ${styles.icon}`}
+        >
+          <RiDeleteBin6Line />
+        </button>
+        <input type="radio" name={`depth-${depth}`} id={id} />
+        <ul>
+          <li>
+            <TagItemForm
+              formId={`${Date.now()}`}
+              type="new"
+              placeHolder="Create tag"
+            />
+          </li>
+          {children.map((tagDetails) => (
+            <TagItem key={tagDetails.id} depth={depth + 1} data={tagDetails} />
+          ))}
+        </ul>
+      </label>
+    </li>
+  );
+}
+
+function TagItemForm({ formId, type, placeHolder = "" }) {
+  const title = type === "new" ? "Create tag" : <BsPencilSquare />;
 
   return (
     <label htmlFor={formId}>
@@ -98,7 +97,7 @@ function TagListForm({ formId, type, placeHolder = "" }) {
           styles[`input-control-${type}`] || ""
         } `}
       >
-        {label}
+        {title}
       </span>
       <input type="checkbox" name="" id={formId} />
       <form>
@@ -130,3 +129,65 @@ function TagListForm({ formId, type, placeHolder = "" }) {
 }
 
 export default TagList;
+
+{
+  /* break */
+}
+{
+  /* <li>
+        <TagItemForm formId="form1" type="new" placeHolder="Create tag" />
+      </li>
+      <li>
+        <label htmlFor="programming">
+          <span
+            title="Show resources with programming tag"
+            className={`${styles.control} ${styles["list-control"]}`}
+          >
+            Programming
+          </span>
+          <TagItemForm
+            formId="programming-form"
+            type="edit"
+            placeHolder="Programming"
+          />
+          <button
+            title="Delete tag"
+            type="button"
+            className={`${styles.btn} ${styles["xx-sm"]} ${styles.rounded} ${styles.primary} ${styles.icon}`}
+          >
+            <RiDeleteBin6Line />
+          </button>
+          <input type="radio" name="level1" id="programming" />
+          <ul>
+            <li>1</li>
+            <li>2</li>
+          </ul>
+        </label>
+      </li>
+      <li>
+        <label htmlFor="music">
+          <span
+            title="Show resources with music tag"
+            className={`${styles.control} ${styles["list-control"]}`}
+          >
+            Music
+          </span>
+          <TagItemForm formId="music-form" type="edit" placeHolder="Music" />
+          <button
+            title="Delete this tag"
+            type="button"
+            className={`${styles.btn} ${styles["xx-sm"]} ${styles.rounded} ${styles.primary} ${styles.icon}`}
+          >
+            <RiDeleteBin6Line />
+          </button>
+          <input type="radio" name="level1" id="music" />
+          <ul>
+            <li>1</li>
+            <li>2</li>
+          </ul>
+        </label>
+      </li> */
+}
+{
+  /* break */
+}
