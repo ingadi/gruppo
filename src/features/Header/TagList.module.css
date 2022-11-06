@@ -1,8 +1,5 @@
 .tag-list {
-  display: flex;
-  flex-direction: column;
-  max-height: 20vh;
-  overflow: auto;
+  display: block;
 }
 
 .tag-list,
@@ -17,7 +14,7 @@
 .tag-list > li li {
   margin-left: 2rem;
   position: relative;
-  padding-top: 0.3rem;
+  padding-top: 0.2rem;
 }
 
 .tag-list li::before {
@@ -27,6 +24,7 @@
   height: 1rem;
   border-bottom: 0.125rem dashed;
   border-left: 0.125rem dashed;
+  opacity: 0.6;
   top: 0;
   left: -1rem;
 }
@@ -62,8 +60,8 @@
 }
 
 .control {
-  padding: 0 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0 0.3rem 0 0;
+  border-radius: 0.3rem;
 }
 
 .control::before {
@@ -122,14 +120,35 @@
   display: inline-flex;
   align-items: center;
   gap: 0.2rem;
-  padding: 0 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0 0.3rem 0 0;
+  border-radius: 0.3rem;
+}
+
+.no-list:hover,
+.control:hover {
+  background: rgba(61, 70, 87, 0.5);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pagination button {
+  margin-top: 2rem;
+  color: whitesmoke;
+  opacity: 0.5;
+}
+
+.pagination button:hover {
+  opacity: 1;
 }
 
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
   .tag-list {
     max-height: 30vh;
-    margin: 0.5rem 0 0 -0.4rem;
+    margin: 0.5rem 0;
   }
 }

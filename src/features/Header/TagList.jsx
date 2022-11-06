@@ -2,6 +2,8 @@ import {
   AiOutlineCloseCircle,
   AiOutlineCheckCircle,
   AiOutlineUnorderedList,
+  AiOutlineLeftCircle,
+  AiOutlineRightCircle,
 } from "react-icons/ai";
 import { BsPencilSquare } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -40,6 +42,20 @@ function TagList({ data }) {
       {data.map((tagDetails) => (
         <TagItem key={tagDetails.id} depth={depth} data={tagDetails} />
       ))}
+      <li className={styles.pagination}>
+        <button
+          title="Previous"
+          className={`${styles.btn} ${styles.icon} ${styles["icon-lg"]}`}
+        >
+          <AiOutlineLeftCircle />
+        </button>
+        <button
+          title="Next"
+          className={`${styles.btn} ${styles.icon} ${styles["icon-lg"]}`}
+        >
+          <AiOutlineRightCircle />
+        </button>
+      </li>
     </ul>
   );
 }
