@@ -123,6 +123,10 @@
   border-radius: 0.5rem;
 }
 
+.tag-list label span:hover {
+  background: rgba(61, 70, 87, 0.5);
+}
+
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
   .tag-list {
