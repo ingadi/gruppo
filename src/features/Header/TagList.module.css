@@ -129,6 +129,22 @@
   background: rgba(61, 70, 87, 0.5);
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pagination button {
+  margin-top: 2rem;
+  color: whitesmoke;
+  opacity: 0.5;
+}
+
+.pagination button:hover {
+  opacity: 1;
+}
+
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
   .tag-list {
