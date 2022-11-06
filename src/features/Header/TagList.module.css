@@ -1,8 +1,6 @@
 .tag-list {
   display: flex;
   flex-direction: column;
-  max-height: 20vh;
-  overflow: auto;
 }
 
 .tag-list,
