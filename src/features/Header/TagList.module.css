@@ -120,10 +120,12 @@
   display: inline-flex;
   align-items: center;
   gap: 0.2rem;
-  border-radius: 0.5rem;
+  padding: 0 0.3rem 0 0;
+  border-radius: 0.3rem;
 }
 
-.tag-list label span:hover {
+.no-list:hover,
+.control:hover {
   background: rgba(61, 70, 87, 0.5);
 }
 
