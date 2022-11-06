@@ -25,6 +25,7 @@
   height: 1rem;
   border-bottom: 0.125rem dashed;
   border-left: 0.125rem dashed;
+  opacity: 0.6;
   top: 0;
   left: -1rem;
 }
