@@ -15,7 +15,7 @@
 .tag-list > li li {
   margin-left: 2rem;
   position: relative;
-  padding-top: 0.3rem;
+  padding-top: 0.2rem;
 }
 
 .tag-list li::before {
