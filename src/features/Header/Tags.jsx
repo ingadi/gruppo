@@ -1,6 +1,5 @@
-import TagList from "./TagList";
-import styles from "./Tags.module.css";
 import { useEffect } from "react";
+import { useState } from "react";
 import {
   query,
   collection,
@@ -10,7 +9,10 @@ import {
   onSnapshot,
   where,
 } from "firebase/firestore";
-import { useState } from "react";
+import Toast from "../../components/Toast";
+import LoadingIndicator from "../../components/LoadingIndicator";
+import TagList from "./TagList";
+import styles from "./Tags.module.css";
 
 const TAGS_DATA = [
   // {
@@ -80,8 +82,14 @@ const TAGS_DATA = [
 
 function Tags() {
   const [tagData, setTagData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [notification, setNotification] = useState({
+    type: null,
+    message: null,
+  });
 
   useEffect(() => {
+    setIsLoading(true);
     const tagsQuerySnapShot = query(
       collection(getFirestore(), "tags"),
       where("parent", "==", null),
@@ -92,18 +100,31 @@ function Tags() {
     onSnapshot(
       tagsQuerySnapShot,
       (snapshot) => {
-        snapshot.docChanges().map(({ doc }) => {
-          return doc.data();
+        const _tagData = snapshot.docChanges().map(({ doc }) => {
+          return { id: doc.id, ...doc.data() };
         });
+        setIsLoading(false);
+        setTagData(_tagData);
       },
-      (error) => console.log(error)
+      (error) => {
+        setNotification({
+          type: "error",
+          message: "Something went wrong, maybe try again?",
+        });
+
+        console.error(error);
+      }
     );
-  });
+  }, []);
 
   return (
     <section className={styles.tags}>
       <h3>My tags</h3>
-      <TagList data={TAGS_DATA} />
+      {!isLoading && <TagList tags={tagData} />}
+      {isLoading && <LoadingIndicator />}
+      {notification["type"] && (
+        <Toast type={notification["type"]} message={notification["message"]} />
+      )}
     </section>
   );
 }
