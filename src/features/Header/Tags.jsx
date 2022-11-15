@@ -1,21 +1,32 @@
 import TagList from "./TagList";
 import styles from "./Tags.module.css";
+import { useEffect } from "react";
+import {
+  query,
+  collection,
+  orderBy,
+  limit,
+  getFirestore,
+  onSnapshot,
+  where,
+} from "firebase/firestore";
+import { useState } from "react";
 
 const TAGS_DATA = [
-  {
-    title: "Music",
-    id: "music",
-    children: [
-      { title: "Chords", id: "1", children: [] },
-      { title: "Rhythm", id: "2", children: [] },
-      { title: "Scales", id: "3", children: [] },
-      {
-        title: "Sound design",
-        id: "sound-design",
-        children: [{ title: "Synthesis", id: "4", children: [] }],
-      },
-    ],
-  },
+  // {
+  //   title: "Music",
+  //   id: "music",
+  //   children: [
+  //     { title: "Chords", id: "1", children: [] },
+  //     { title: "Rhythm", id: "2", children: [] },
+  //     { title: "Scales", id: "3", children: [] },
+  //     {
+  //       title: "Sound design",
+  //       id: "sound-design",
+  //       children: [{ title: "Synthesis", id: "4", children: [] }],
+  //     },
+  //   ],
+  // },
   {
     title: "Programming",
     id: "programming",
@@ -55,19 +66,40 @@ const TAGS_DATA = [
       { title: "Web development", id: "17", children: [] },
     ],
   },
-  {
-    title: "Fitness",
-    id: "fitness",
-    children: [
-      { title: "Strength training", id: "18", children: [] },
-      { title: "Cardio", id: "19", children: [] },
-      { title: "Stretching", id: "20", children: [] },
-      { title: "Diet", id: "21", children: [] },
-    ],
-  },
+  // {
+  //   title: "Fitness",
+  //   id: "fitness",
+  //   children: [
+  //     { title: "Strength training", id: "18", children: [] },
+  //     { title: "Cardio", id: "19", children: [] },
+  //     { title: "Stretching", id: "20", children: [] },
+  //     { title: "Diet", id: "21", children: [] },
+  //   ],
+  // },
 ];
 
 function Tags() {
+  const [tagData, setTagData] = useState([]);
+
+  useEffect(() => {
+    const tagsQuerySnapShot = query(
+      collection(getFirestore(), "tags"),
+      where("parent", "==", null),
+      orderBy("title", "desc"),
+      limit(12)
+    );
+
+    onSnapshot(
+      tagsQuerySnapShot,
+      (snapshot) => {
+        snapshot.docChanges().map(({ doc }) => {
+          return doc.data();
+        });
+      },
+      (error) => console.log(error)
+    );
+  });
+
   return (
     <section className={styles.tags}>
       <h3>My tags</h3>
