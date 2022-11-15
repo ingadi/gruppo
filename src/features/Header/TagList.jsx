@@ -1,6 +1,56 @@
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+  orderBy,
+} from "firebase/firestore";
+import { useState } from "react";
+
+const subTagsCache = new Map();
+
 function TagList({ tags }) {
-  console.log(tags);
-  return "hello";
+  const [subTags, setSubTags] = useState({ id: null, tags: [] });
+
+  const handleFetchSubtags = async (id) => {
+    let _subTags = [];
+
+    if (subTagsCache.has(id)) {
+      setSubTags(subTagsCache.get(id));
+    } else {
+      try {
+        const q = query(
+          collection(getFirestore(), "tags"),
+          where("parent", "==", id),
+          orderBy("title", "desc")
+        );
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) =>
+          _subTags.push({ id: doc.id, ...doc.data() })
+        );
+
+        subTagsCache.set(id, { id, tags: _subTags });
+        setSubTags({ id, tags: _subTags });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  return (
+    <ul>
+      {tags.map(({ id, title }) => (
+        <li onClick={() => handleFetchSubtags(`${id}`)} key={id}>
+          {title}
+          {subTags.id === id && subTags.tags.length > 0 && (
+            <TagList tags={subTags.tags} />
+          )}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 // import {
