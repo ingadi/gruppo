@@ -13,7 +13,11 @@ const subTagsCache = new Map();
 function TagList({ tags }) {
   const [subTags, setSubTags] = useState({ id: null, tags: [] });
 
-  const handleFetchSubtags = async (id) => {
+  const handleFetchSubtags = async (e, id) => {
+    e.stopPropagation();
+
+    console.log(id);
+
     let _subTags = [];
 
     if (subTagsCache.has(id)) {
@@ -42,7 +46,7 @@ function TagList({ tags }) {
   return (
     <ul>
       {tags.map(({ id, title }) => (
-        <li onClick={() => handleFetchSubtags(`${id}`)} key={id}>
+        <li onClick={(e) => handleFetchSubtags(e, id)} key={id}>
           {title}
           {subTags.id === id && subTags.tags.length > 0 && (
             <TagList tags={subTags.tags} />
