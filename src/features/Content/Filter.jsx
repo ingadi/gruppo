@@ -5,7 +5,6 @@ import inputStyles from "../../components/Input.module.css";
 const styles = { ...filterStyles, ...buttonStyles, ...inputStyles };
 
 function Filter({ depth }) {
-  console.log(depth);
   return (
     <form className={styles.filter}>
       <div className={styles.group}>
