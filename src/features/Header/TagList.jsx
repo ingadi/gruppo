@@ -12,7 +12,7 @@ import DepthContext from "../DepthProvider/DepthProvider";
 
 const subTagsCache = new Map();
 
-function TagList({ tags, depth = "" }) {
+function TagList({ tags, depth = [] }) {
   const [subTags, setSubTags] = useState({ id: null, tags: [] });
   const { setDepth } = useContext(DepthContext);
 
@@ -51,11 +51,11 @@ function TagList({ tags, depth = "" }) {
       {tags.map(({ id, title }) => (
         <li
           key={id}
-          onClick={(e) => handleFetchSubtags(e, id, `${depth}/${title}`)}
+          onClick={(e) => handleFetchSubtags(e, id, [...depth, title])}
         >
           {title}
           {subTags.id === id && subTags.tags.length > 0 && (
-            <TagList tags={subTags.tags} depth={title} />
+            <TagList tags={subTags.tags} depth={[...depth, title]} />
           )}
         </li>
       ))}
