@@ -10,13 +10,13 @@ import { useState } from "react";
 
 const subTagsCache = new Map();
 
-function TagList({ tags }) {
+function TagList({ tags, parentTitle = "" }) {
   const [subTags, setSubTags] = useState({ id: null, tags: [] });
 
-  const handleFetchSubtags = async (e, id) => {
+  const handleFetchSubtags = async (e, id, tree) => {
     e.stopPropagation();
 
-    console.log(id);
+    console.log(tree);
 
     let _subTags = [];
 
@@ -46,10 +46,13 @@ function TagList({ tags }) {
   return (
     <ul>
       {tags.map(({ id, title }) => (
-        <li onClick={(e) => handleFetchSubtags(e, id)} key={id}>
+        <li
+          key={id}
+          onClick={(e) => handleFetchSubtags(e, id, `${parentTitle}/${title}`)}
+        >
           {title}
           {subTags.id === id && subTags.tags.length > 0 && (
-            <TagList tags={subTags.tags} />
+            <TagList tags={subTags.tags} parentTitle={title} />
           )}
         </li>
       ))}
