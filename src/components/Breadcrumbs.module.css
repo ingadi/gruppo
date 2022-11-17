@@ -1,0 +1,18 @@
+.breadcrumb {
+  background-color: aliceblue;
+  padding: 0.2rem;
+}
+
+.breadcrumb ol {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.breadcrumb li {
+  cursor: pointer;
+}
+
+.breadcrumb li:hover {
+  text-decoration: underline;
+}
