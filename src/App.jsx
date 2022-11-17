@@ -4,14 +4,16 @@ import "./App.css";
 import Modal from "./components/Modal";
 
 import { AuthProvider } from "./features/AuthProvider/AuthProvider";
+import { DepthProvider } from "./features/DepthProvider/DepthProvider";
 
 function App() {
   return (
     <AuthProvider>
       <main>
-        {/* <Modal /> */}
-        <Header />
-        <Content />
+        <DepthProvider>
+          <Header />
+          <Content />
+        </DepthProvider>
       </main>
     </AuthProvider>
   );

@@ -6,17 +6,20 @@ import {
   where,
   orderBy,
 } from "firebase/firestore";
+import { useContext } from "react";
 import { useState } from "react";
+import DepthContext from "../DepthProvider/DepthProvider";
 
 const subTagsCache = new Map();
 
-function TagList({ tags, parentTitle = "" }) {
+function TagList({ tags, depth = "" }) {
   const [subTags, setSubTags] = useState({ id: null, tags: [] });
+  const { setDepth } = useContext(DepthContext);
 
-  const handleFetchSubtags = async (e, id, tree) => {
+  const handleFetchSubtags = async (e, id, depth) => {
     e.stopPropagation();
 
-    console.log(tree);
+    setDepth(depth);
 
     let _subTags = [];
 
@@ -48,11 +51,11 @@ function TagList({ tags, parentTitle = "" }) {
       {tags.map(({ id, title }) => (
         <li
           key={id}
-          onClick={(e) => handleFetchSubtags(e, id, `${parentTitle}/${title}`)}
+          onClick={(e) => handleFetchSubtags(e, id, `${depth}/${title}`)}
         >
           {title}
           {subTags.id === id && subTags.tags.length > 0 && (
-            <TagList tags={subTags.tags} parentTitle={title} />
+            <TagList tags={subTags.tags} depth={title} />
           )}
         </li>
       ))}
