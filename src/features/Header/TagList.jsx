@@ -48,6 +48,7 @@ function TagList({ tags, depth = [] }) {
 
   return (
     <ul>
+      <li>Add tag</li>
       {tags.map(({ id, title }) => (
         <li
           key={id}
