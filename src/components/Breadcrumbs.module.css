@@ -1,18 +1,42 @@
 .breadcrumb {
-  background-color: aliceblue;
-  padding: 0.2rem;
+  background: lightgray;
+  padding: 1rem 1rem 0.875rem 1rem;
+  margin-top: 2rem;
+  border-radius: 0.125rem;
 }
 
 .breadcrumb ol {
+  margin: 0;
+  padding: 0;
   display: flex;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.2rem;
   list-style: none;
 }
 
 .breadcrumb li {
   cursor: pointer;
+  text-transform: capitalize;
 }
 
-.breadcrumb li:hover {
-  text-decoration: underline;
+.breadcrumb li span {
+  display: inline-block;
+  border-bottom: 0.125rem dashed transparent;
+}
+
+.breadcrumb li:last-child {
+  font-weight: bolder;
+}
+
+.breadcrumb li:has(+ li)::after {
+  content: "/";
+  margin-left: 0.2rem;
+}
+
+.breadcrumb li:hover span {
+  border-bottom: 0.125rem dashed black;
+}
+
+.breadcrumb li:active span {
+  transform: translateY(0.125rem);
 }
