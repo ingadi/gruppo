@@ -11,7 +11,9 @@ import buttonStyles from "../../components/Button.module.css";
 
 const styles = { ...resourceStyles, ...buttonStyles };
 
-function Resources() {
+function Resources({ depth }) {
+  console.log(depth);
+
   return (
     <div className={styles.resources}>
       <ul className={styles.list}>
