@@ -1,7 +1,7 @@
 .resources {
   display: flex;
   flex-direction: column;
-  padding: 1rem 0;
+  margin-top: 1rem;
 }
 
 .list {
@@ -98,10 +98,6 @@
 
 /* For Desktop View */
 @media screen and (min-width: 1024px) {
-  .resources {
-    padding: 2rem 0;
-  }
-
   .resources-actions {
     flex-direction: row;
     width: 100%;
