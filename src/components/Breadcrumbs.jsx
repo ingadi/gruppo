@@ -4,8 +4,8 @@ function Breadcrumb({ list }) {
   return (
     <nav className={styles.breadcrumb}>
       <ol>
-        {list.map((item) => (
-          <li>{item}</li>
+        {list.map((item, idx) => (
+          <li key={idx}>{item}</li>
         ))}
       </ol>
     </nav>
