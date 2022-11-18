@@ -23,10 +23,10 @@ function TagList({ tags, selectedTagTitles = [] }) {
     }
   }, []);
 
-  const handleClick = async (e, id, selectedTagTitles) => {
+  const handleClick = async (e, id, parent, selectedTagTitles) => {
     e.stopPropagation();
     await fetchSubtags(id, selectedTagTitles);
-    setSelected({ id, selectedTagTitles });
+    setSelected({ id: parent || id, selectedTagTitles });
   };
 
   const fetchSubtags = async (id) => {
@@ -57,10 +57,12 @@ function TagList({ tags, selectedTagTitles = [] }) {
   return (
     <ul>
       <li>Add tag</li>
-      {tags.map(({ id, title }) => (
+      {tags.map(({ id, title, parent }) => (
         <li
           key={id}
-          onClick={(e) => handleClick(e, id, [...selectedTagTitles, title])}
+          onClick={(e) =>
+            handleClick(e, id, parent, [...selectedTagTitles, title])
+          }
         >
           {title}
           {subTags.id === id && subTags.tags.length > 0 && (
