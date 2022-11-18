@@ -6,14 +6,15 @@ import Filter from "./Filter";
 import Resources from "./Resources";
 
 function Content() {
-  const { depth } = useContext(DepthContext);
+  const { selected } = useContext(DepthContext);
+  const { selectedTagTitles } = selected;
 
   return (
     <section className={styles.content}>
       <h2>My resources</h2>
-      <Filter depth={depth} />
-      <Breadcrumb list={depth} />
-      <Resources depth={depth} />
+      <Filter selectedTags={selectedTagTitles} />
+      <Breadcrumb list={selectedTagTitles} />
+      <Resources selectedTags={selectedTagTitles} />
     </section>
   );
 }

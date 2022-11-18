@@ -6,27 +6,35 @@ import {
   where,
   orderBy,
 } from "firebase/firestore";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import DepthContext from "../DepthProvider/DepthProvider";
 
 const subTagsCache = new Map();
 
-function TagList({ tags, depth = [] }) {
+function TagList({ tags, selectedTagTitles = [] }) {
   const [subTags, setSubTags] = useState({ id: null, tags: [] });
-  const { setDepth } = useContext(DepthContext);
+  const { selected, setSelected } = useContext(DepthContext);
 
-  const handleFetchSubtags = async (e, id, depth) => {
+  useEffect(() => {
+    if (selected.id !== null) {
+      fetchSubtags(selected.id);
+    }
+  }, []);
+
+  const handleClick = async (e, id, selectedTagTitles) => {
     e.stopPropagation();
+    await fetchSubtags(id, selectedTagTitles);
+    setSelected({ id, selectedTagTitles });
+  };
 
-    setDepth(depth);
-
-    let _subTags = [];
-
-    if (subTagsCache.has(id)) {
-      setSubTags(subTagsCache.get(id));
-    } else {
-      try {
+  const fetchSubtags = async (id) => {
+    try {
+      let _subTags = [];
+      if (subTagsCache.has(id)) {
+        setSubTags(subTagsCache.get(id));
+      } else {
         const q = query(
           collection(getFirestore(), "tags"),
           where("parent", "==", id),
@@ -40,9 +48,9 @@ function TagList({ tags, depth = [] }) {
 
         subTagsCache.set(id, { id, tags: _subTags });
         setSubTags({ id, tags: _subTags });
-      } catch (error) {
-        console.error(error);
       }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -52,11 +60,14 @@ function TagList({ tags, depth = [] }) {
       {tags.map(({ id, title }) => (
         <li
           key={id}
-          onClick={(e) => handleFetchSubtags(e, id, [...depth, title])}
+          onClick={(e) => handleClick(e, id, [...selectedTagTitles, title])}
         >
           {title}
           {subTags.id === id && subTags.tags.length > 0 && (
-            <TagList tags={subTags.tags} depth={[...depth, title]} />
+            <TagList
+              tags={subTags.tags}
+              selectedTagTitles={[...selectedTagTitles, title]}
+            />
           )}
         </li>
       ))}

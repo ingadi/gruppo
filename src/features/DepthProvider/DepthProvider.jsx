@@ -5,16 +5,19 @@ import { createContext } from "react";
 const DepthContext = createContext();
 
 export function DepthProvider({ children }) {
-  const [depth, setDepth] = useState(
-    JSON.parse(localStorage.getItem("depth")) || []
+  const [selected, setSelected] = useState(
+    JSON.parse(localStorage.getItem("selected")) || {
+      id: null,
+      selectedTagTitles: [],
+    }
   );
 
   useEffect(() => {
-    localStorage.setItem("depth", JSON.stringify(depth));
-  }, [depth]);
+    localStorage.setItem("selected", JSON.stringify(selected));
+  }, [selected]);
 
   return (
-    <DepthContext.Provider value={{ depth, setDepth }}>
+    <DepthContext.Provider value={{ selected, setSelected }}>
       {children}
     </DepthContext.Provider>
   );
