@@ -15,7 +15,7 @@
 }
 
 .breadcrumb li {
-  cursor: pointer;
+  /* cursor: pointer; */
   text-transform: capitalize;
 }
 
@@ -33,10 +33,10 @@
   margin-left: 0.2rem;
 }
 
-.breadcrumb li:hover span {
+/* .breadcrumb li:hover span {
   border-bottom: 0.125rem dashed black;
 }
 
 .breadcrumb li:active span {
   transform: translateY(0.125rem);
-}
+} */
