@@ -1,5 +1,5 @@
 import LoadingIndicator from "../../components/LoadingIndicator";
-import AuthContext from "../AuthProvider/AuthProvider";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 import Toast from "../../components/Toast";
 import { useContext } from "react";
 import { FiLogOut } from "react-icons/fi";

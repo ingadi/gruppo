@@ -6,7 +6,7 @@ import styles from "./AuthProvider.module.css";
 import { BsGoogle } from "react-icons/bs";
 import buttonStyles from "../../components/Button.module.css";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [notification, setNotification] = useState({
@@ -65,5 +65,3 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-
-export default AuthContext;

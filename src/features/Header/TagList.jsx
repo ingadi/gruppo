@@ -9,13 +9,13 @@ import {
 import { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
-import DepthContext from "../SelectedTagsProvider";
+import { SelectedTagsContext } from "../SelectedTagsProvider";
 
 const subTagsCache = new Map();
 
 function TagList({ tags, selectedTagTitles = [] }) {
   const [subTags, setSubTags] = useState({ id: null, tags: [] });
-  const { selected, setSelected } = useContext(DepthContext);
+  const { selected, setSelected } = useContext(SelectedTagsContext);
 
   useEffect(() => {
     if (selected.id !== null) {

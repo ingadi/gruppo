@@ -1,1 +1,4 @@
-export { default, SelectedTagsProvider } from "./SelectedTagsProvider";
+export {
+  SelectedTagsContext,
+  SelectedTagsProvider,
+} from "./SelectedTagsProvider";
