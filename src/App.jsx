@@ -1,19 +1,18 @@
 import Header from "./features/Header";
 import Content from "./features/Content";
 import "./App.css";
-import Modal from "./components/Modal";
 
-import { AuthProvider } from "./features/AuthProvider/AuthProvider";
-import { DepthProvider } from "./features/DepthProvider/DepthProvider";
+import { AuthProvider } from "./features/AuthProvider";
+import { SelectedTagsProvider } from "./features/SelectedTagsProvider";
 
 function App() {
   return (
     <AuthProvider>
       <main>
-        <DepthProvider>
+        <SelectedTagsProvider>
           <Header />
           <Content />
-        </DepthProvider>
+        </SelectedTagsProvider>
       </main>
     </AuthProvider>
   );

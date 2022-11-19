@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Breadcrumb from "../../components/Breadcrumbs";
-import DepthContext from "../DepthProvider/DepthProvider";
+import DepthContext from "../SelectedTagsProvider";
 import styles from "./Content.module.css";
 import Filter from "./Filter";
 import Resources from "./Resources";

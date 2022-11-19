@@ -9,7 +9,7 @@ import {
 import { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
-import DepthContext from "../DepthProvider/DepthProvider";
+import DepthContext from "../SelectedTagsProvider";
 
 const subTagsCache = new Map();
 
